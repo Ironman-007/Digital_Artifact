@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 0,
+    "active_layer": 40,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -12,14 +12,15 @@
       "pads": 1.0,
       "tracks": 1.0,
       "vias": 1.0,
-      "zones": 0.6
+      "zones": 0.699999988079071
     },
+    "ratsnest_display_mode": 0,
     "selection_filter": {
       "dimensions": true,
       "footprints": true,
       "graphics": true,
       "keepouts": true,
-      "lockedItems": false,
+      "lockedItems": true,
       "otherItems": true,
       "pads": true,
       "text": true,
@@ -40,6 +41,7 @@
       11,
       12,
       13,
+      14,
       15,
       16,
       17,
@@ -60,11 +62,9 @@
       33,
       34,
       35,
-      36,
-      39,
-      40
+      36
     ],
-    "visible_layers": "fffffff_ffffffff",
+    "visible_layers": "7fcffff_80000001",
     "zone_display_mode": 0
   },
   "git": {
@@ -74,7 +74,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "V1.kicad_prl",
+    "filename": "MCU.kicad_prl",
     "version": 3
   },
   "project": {
