@@ -10,5 +10,10 @@ MCU:
 BC832
 
 IMU:
-MPU6050
+ICM-20948 (9-DoF)
+
+Actuator:
+Linear vibrator
+
+
 
