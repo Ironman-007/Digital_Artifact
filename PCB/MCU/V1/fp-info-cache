@@ -1,4 +1,4 @@
-23339402846862201
+23341122631678632
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -66954,6 +66954,13 @@ nrf_mudule_fz
 0
 18
 18
+Mylib
+pinheader_pitch_2mmx8
+
+
+0
+0
+0
 Mylib
 tactile_button_15mmx5mm
 
