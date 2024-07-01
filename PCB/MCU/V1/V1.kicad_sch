@@ -4458,6 +4458,16 @@
 	)
 	(wire
 		(pts
+			(xy 223.52 96.52) (xy 231.14 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6bcbe530-cfa5-49be-b46a-2ab881a7e395")
+	)
+	(wire
+		(pts
 			(xy 54.61 158.75) (xy 54.61 156.21)
 		)
 		(stroke
@@ -4908,7 +4918,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 54.61) (xy 110.49 54.61)
+			(xy 100.33 54.61) (xy 109.22 54.61)
 		)
 		(stroke
 			(width 0)
@@ -5496,16 +5506,6 @@
 		)
 		(uuid "fc0e274f-5b4a-4c1e-a867-754eed10dba6")
 	)
-	(wire
-		(pts
-			(xy 223.52 96.52) (xy 231.14 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fc5243ed-b482-4e00-be0f-fccbbdf3856e")
-	)
 	(polyline
 		(pts
 			(xy 195.58 13.97) (xy 195.58 142.24)
@@ -5664,6 +5664,17 @@
 			(justify left bottom)
 		)
 		(uuid "2913d278-6f69-442e-b23d-42ebe9222a0f")
+	)
+	(label "VIB_CTRL"
+		(at 109.22 54.61 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2bda75cf-252e-47c9-8377-fee112321b40")
 	)
 	(label "VBAT"
 		(at 74.93 158.75 0)
@@ -5917,6 +5928,17 @@
 			(justify left bottom)
 		)
 		(uuid "f8ded8e5-a055-4391-bace-b65ce2f35831")
+	)
+	(label "VIB_CTRL"
+		(at 223.52 96.52 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fa36d49f-0c2a-49db-bb79-6f854b349a33")
 	)
 	(symbol
 		(lib_id "Device:LED_Small_Filled")
