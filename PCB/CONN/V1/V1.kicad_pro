@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 0.0,
+          "height": 1.5,
+          "width": 2.0
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -179,7 +179,9 @@
       "track_widths": [
         0.0,
         0.1524,
-        0.254
+        0.254,
+        0.381,
+        0.508
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -445,7 +447,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "btn.kicad_pro",
+    "filename": "V1.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -483,7 +485,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "btn.step",
+      "step": "CONN.step",
       "svg": "",
       "vrml": ""
     },

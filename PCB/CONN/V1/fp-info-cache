@@ -1,4 +1,4 @@
-23344562236802176
+23346411056545220
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -66375,11 +66375,11 @@ CONV_XCL223A123D2-G
 8
 Mylib
 CUS-12B
-
+<b>CUS-12B</b><br>
 
 0
-9
-3
+7
+7
 Mylib
 CX2016DB38400F0FSRC1
 
@@ -66630,8 +66630,15 @@ Pinheader_2mmx6
 
 
 0
+6
+6
+Mylib
+Pinheader_2mmx10
+
+
 0
-0
+10
+10
 Mylib
 QFN40P300X300X105-24N
 
