@@ -113,9 +113,9 @@
 			(subtractmaskfromsilk no)
 			(outputformat 1)
 			(mirror no)
-			(drillshape 1)
+			(drillshape 0)
 			(scaleselection 1)
-			(outputdirectory "")
+			(outputdirectory "Gerber/")
 		)
 	)
 	(net 0 "")
@@ -478,7 +478,7 @@
 		(uuid "aa670e33-e3a0-46ae-9d65-abfc4e9dd909")
 		(at 116.275 107.15 90)
 		(property "Reference" "J6"
-			(at 0 0.5 270)
+			(at 0 0.5 -90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "34bbffbe-47b6-4e97-a853-2472e52b4f30")
@@ -490,7 +490,7 @@
 			)
 		)
 		(property "Value" "Conn_01x01_Pin"
-			(at 0 -0.5 270)
+			(at 0 -0.5 -90)
 			(layer "F.Fab")
 			(uuid "ab9e51b8-7a7a-40cc-9592-4a50d40f0d6a")
 			(effects
@@ -770,7 +770,7 @@
 		(descr "LED SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "LED handsolder")
 		(property "Reference" "D1"
-			(at 0 -1.43 360)
+			(at 0 -1.43 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "e5857b68-e4a6-45a4-96ec-c1b784eec4ce")
@@ -782,7 +782,7 @@
 			)
 		)
 		(property "Value" "LED_Small"
-			(at 0 1.43 360)
+			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "00a8789a-0e56-4499-97bd-217fa68ff6ec")
 			(effects
@@ -954,7 +954,7 @@
 			(uuid "b4eaddf1-5e5a-4e83-b0b5-2497bc8038e1")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "3af31f06-bba5-4fbd-9952-46d96dde8eb1")
 			(effects
@@ -1001,7 +1001,7 @@
 		(uuid "02e94fa4-4289-4c85-b9e2-41b0c4f4c61c")
 		(at 105.14 117.05 90)
 		(property "Reference" "J5"
-			(at 0 -0.5 270)
+			(at 0 -0.5 -90)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "d59ca9eb-d259-4bca-9c76-b10f9213d7ec")
@@ -1014,7 +1014,7 @@
 			)
 		)
 		(property "Value" "Conn_01x01_Pin"
-			(at 0 0.5 270)
+			(at 0 0.5 -90)
 			(layer "B.Fab")
 			(uuid "44887951-726f-46fa-ac39-0e85c5d1452f")
 			(effects
@@ -2208,7 +2208,7 @@
 		(descr "SOT, 3 Pin (https://www.jedec.org/system/files/docs/to-236h.pdf variant AB), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "SOT TO_SOT_SMD")
 		(property "Reference" "Q1"
-			(at 0 2.4 360)
+			(at 0 2.4 0)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "9af2ce79-b06b-4a93-a6a5-98e0202a9fdb")
@@ -2221,7 +2221,7 @@
 			)
 		)
 		(property "Value" "DMN2056U"
-			(at 0 -2.4 360)
+			(at 0 -2.4 0)
 			(layer "B.Fab")
 			(uuid "68b1ec83-c440-4852-b1c7-b5355b943930")
 			(effects
@@ -2419,7 +2419,7 @@
 			(uuid "af059681-803c-4169-8752-2155e76de1b1")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(uuid "87dd2239-3935-47bc-a684-f04812e957e0")
 			(effects
@@ -3155,7 +3155,7 @@
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "capacitor handsolder")
 		(property "Reference" "C4"
-			(at 0 1.68 270)
+			(at 0 1.68 -90)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "39595f4c-2846-4d51-9fd9-76361e9d3b0e")
@@ -3168,7 +3168,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 0 -1.68 270)
+			(at 0 -1.68 -90)
 			(layer "B.Fab")
 			(uuid "9031fbb4-8775-484f-8af1-6e35111e628e")
 			(effects
@@ -3324,7 +3324,7 @@
 			(uuid "2e42b891-c742-4999-bb24-bc6f1dec814c")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 270)
+			(at 0 0 -90)
 			(layer "B.Fab")
 			(uuid "17a33581-9a9d-4e2c-ba99-45ed5d169d48")
 			(effects
@@ -3589,7 +3589,7 @@
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "capacitor handsolder")
 		(property "Reference" "C2"
-			(at 0 1.68 270)
+			(at 0 1.68 -90)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "8baf4ca9-93b1-4b2a-b552-e22ead49dfd1")
@@ -3602,7 +3602,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 0 -1.68 270)
+			(at 0 -1.68 -90)
 			(layer "B.Fab")
 			(uuid "03ce029d-f866-4186-a3a1-65c8a748d212")
 			(effects
@@ -3758,7 +3758,7 @@
 			(uuid "22f6420a-8980-4caf-8614-ede7065d808e")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 270)
+			(at 0 0 -90)
 			(layer "B.Fab")
 			(uuid "37bf6a34-f217-4fa8-842b-02808db296bf")
 			(effects
@@ -3806,7 +3806,7 @@
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "R3"
-			(at 0 1.17 360)
+			(at 0 1.17 0)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "995b25b1-29e6-4a1d-8ca3-f9a6c64aa67e")
@@ -3819,7 +3819,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 0 -1.17 360)
+			(at 0 -1.17 0)
 			(layer "B.Fab")
 			(uuid "c09455dc-7d23-462f-b0ff-a8335a670969")
 			(effects
@@ -3975,7 +3975,7 @@
 			(uuid "30671d50-f526-4ef6-8f4f-107cd052f98a")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(uuid "349d00eb-5be2-4d67-80da-9c38bbf97ac3")
 			(effects
@@ -4500,7 +4500,7 @@
 		(uuid "010b9b1a-942d-4a8f-bd60-92afc3abd383")
 	)
 	(via
-		(at 122 110.5)
+		(at 122.5 110)
 		(size 0.6604)
 		(drill 0.3302)
 		(layers "F.Cu" "B.Cu")
@@ -4616,7 +4616,7 @@
 		(uuid "62f010b6-445d-4619-b477-e12a9d1cb02a")
 	)
 	(via
-		(at 124.5 112.95)
+		(at 124.5 112)
 		(size 0.6604)
 		(drill 0.3302)
 		(layers "F.Cu" "B.Cu")
@@ -4661,7 +4661,7 @@
 		(uuid "70620063-a00e-4780-bc43-3cfe7a8030d8")
 	)
 	(via
-		(at 124.5 110.5)
+		(at 124.5 110)
 		(size 0.6604)
 		(drill 0.3302)
 		(layers "F.Cu" "B.Cu")
