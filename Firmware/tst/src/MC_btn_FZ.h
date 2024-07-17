@@ -12,5 +12,5 @@ extern uint8_t btn2;
 extern uint8_t btn3;
 extern uint8_t btn4;
 
-extern void MC_btn_init(void);
+extern void MC_btnInit(void);
 extern void MC_read_btn(void);

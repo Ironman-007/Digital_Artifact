@@ -7,7 +7,7 @@ uint8_t btn4 = 0;
 
 int btn_reading = 0;
 
-void MC_btn_init()
+void MC_btnInit()
 {
   pinMode(BTN_1_PIN, INPUT);
   pinMode(BTN_2_PIN, INPUT);

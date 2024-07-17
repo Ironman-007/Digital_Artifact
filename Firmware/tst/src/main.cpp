@@ -8,7 +8,6 @@ void setup()
 {
   MC_systemInit();
   MC_joystickInit();
-  MC_btn_init();
   MC_imu_init();
   MC_BLE_init();
   MC_BLE_startAdv();
