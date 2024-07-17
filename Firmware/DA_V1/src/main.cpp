@@ -20,9 +20,9 @@ void loop()
 {
   if (ble_connnected)
   {
-    if (timer4Interrupt_10ms)
+    if (timer4Interrupt_20ms)
     {
-      timer4Interrupt_10ms = false;
+      timer4Interrupt_20ms = false;
 
       MC_joystickRead();
       MC_read_imu();

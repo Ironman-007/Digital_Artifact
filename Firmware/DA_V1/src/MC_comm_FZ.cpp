@@ -7,6 +7,7 @@
 #include "MC_IMU_FZ.h"
 #include "MC_joystick_FZ.h"
 #include "MC_btn_FZ.h"
+#include "MC_encoder_FZ.h"
 
 volatile bool ble_connnected = false;
 
@@ -121,6 +122,9 @@ void MC_pack_ack(void) {
   memcpy(&pkg2send[47], mc_byte, 1);
   mc_byte = (byte *) &btn4;
   memcpy(&pkg2send[48], mc_byte, 1);
+
+  mc_byte = (byte *) &encoder_count;
+  memcpy(&pkg2send[49], mc_byte, 4);
 }
 
 void MC_comm_send_data(uint8_t *data2send, uint8_t len) {
