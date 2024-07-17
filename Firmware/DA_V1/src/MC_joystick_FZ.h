@@ -8,5 +8,5 @@
 extern int joystickX;
 extern int joystickY;
 
-extern void joystickInit();
-extern void joystickRead();
+extern void MC_joystickInit();
+extern void MC_joystickRead();
