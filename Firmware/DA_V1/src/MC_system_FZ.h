@@ -8,7 +8,7 @@
 #define IC2_SCL_pin 27
 
 #define HW_TIMER_INTERVAL_MS 1
-#define TIMER_INTERVAL_2ms   2L
+#define TIMER_INTERVAL_2ms   5L
 #define TIMER_INTERVAL_20ms  20L
 
 extern volatile bool timer4Interrupt_2ms;

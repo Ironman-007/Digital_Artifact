@@ -5,12 +5,9 @@ int currentStateCLK = 0;
 
 long encoder_count  = 0;
 
-void MC_encoder_init()
-{
+void MC_encoder_init() {
   pinMode(ENCODER_1_PIN, INPUT);
   pinMode(ENCODER_2_PIN, INPUT);
-
-  lastStateCLK = 0;
 }
 
 void MC_read_encoder(void)
