@@ -24,13 +24,6 @@ void loop()
 {
   if (ble_connnected)
   {
-    if (timer4Interrupt_2ms)
-    {
-      timer4Interrupt_2ms = false;
-
-      MC_read_encoder();
-    }
-
     if (timer4Interrupt_20ms)
     {
       timer4Interrupt_20ms = false;

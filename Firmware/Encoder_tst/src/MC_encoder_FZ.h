@@ -10,5 +10,4 @@
 extern long encoder_count;
 
 extern void MC_encoder_init(void);
-extern void MC_read_encoder(void);
 
