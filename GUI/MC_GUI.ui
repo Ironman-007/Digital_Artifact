@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>599</width>
-    <height>913</height>
+    <width>900</width>
+    <height>871</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QPushButton" name="close_btn">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>830</y>
-      <width>281</width>
+      <x>590</x>
+      <y>780</y>
+      <width>301</width>
       <height>31</height>
      </rect>
     </property>
@@ -37,8 +37,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>581</width>
-      <height>811</height>
+      <width>881</width>
+      <height>771</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -58,7 +58,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="text">
@@ -68,9 +68,9 @@
     <widget class="QComboBox" name="serial_comboBox">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>331</width>
+       <x>610</x>
+       <y>10</y>
+       <width>261</width>
        <height>31</height>
       </rect>
      </property>
@@ -84,8 +84,8 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>90</y>
-       <width>151</width>
+       <y>40</y>
+       <width>161</width>
        <height>31</height>
       </rect>
      </property>
@@ -104,7 +104,7 @@
     <widget class="QPushButton" name="open_btn">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>160</x>
        <y>10</y>
        <width>161</width>
        <height>31</height>
@@ -112,7 +112,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="text">
@@ -123,24 +123,24 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>680</y>
-       <width>561</width>
-       <height>121</height>
+       <y>670</y>
+       <width>861</width>
+       <height>91</height>
       </rect>
      </property>
     </widget>
     <widget class="QPushButton" name="start_serial_btn">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>90</y>
+       <x>160</x>
+       <y>40</y>
        <width>81</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="text">
@@ -150,15 +150,15 @@
     <widget class="QPushButton" name="stop_serial_btn">
      <property name="geometry">
       <rect>
-       <x>259</x>
-       <y>90</y>
-       <width>81</width>
+       <x>230</x>
+       <y>40</y>
+       <width>91</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="text">
@@ -168,15 +168,15 @@
     <widget class="QPushButton" name="recording_btn">
      <property name="geometry">
       <rect>
-       <x>350</x>
-       <y>90</y>
-       <width>101</width>
+       <x>610</x>
+       <y>40</y>
+       <width>141</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>14</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -186,20 +186,20 @@
       <string>REC</string>
      </property>
     </widget>
-    <widget class="PlotWidget" name="rtd1_plot" native="true">
+    <widget class="PlotWidget" name="acc_x_plot" native="true">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>130</y>
-       <width>561</width>
+       <y>70</y>
+       <width>281</width>
        <height>91</height>
       </rect>
      </property>
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>10</y>
+        <x>60</x>
+        <y>0</y>
         <width>151</width>
         <height>16</height>
        </rect>
@@ -210,64 +210,25 @@
        </font>
       </property>
       <property name="text">
-       <string>Pressure_1</string>
+       <string>acc_x</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
-    <widget class="QPushButton" name="temp_set_btn">
-     <property name="geometry">
-      <rect>
-       <x>470</x>
-       <y>50</y>
-       <width>101</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-       <weight>50</weight>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>SET</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="temp_spinbox">
-     <property name="geometry">
-      <rect>
-       <x>350</x>
-       <y>46</y>
-       <width>111</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="minimum">
-      <number>-99</number>
-     </property>
-    </widget>
     <widget class="QPushButton" name="stoprecording_btn">
      <property name="geometry">
       <rect>
-       <x>460</x>
-       <y>90</y>
-       <width>111</width>
+       <x>740</x>
+       <y>40</y>
+       <width>131</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>14</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -277,19 +238,19 @@
       <string>STOPREC</string>
      </property>
     </widget>
-    <widget class="PlotWidget" name="rtd2_plot" native="true">
+    <widget class="PlotWidget" name="gyro_x_plot" native="true">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>220</y>
-       <width>561</width>
+       <y>170</y>
+       <width>281</width>
        <height>91</height>
       </rect>
      </property>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>60</x>
         <y>0</y>
         <width>151</width>
         <height>16</height>
@@ -301,26 +262,26 @@
        </font>
       </property>
       <property name="text">
-       <string>Pressure_2</string>
+       <string>gyro_x</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
-    <widget class="PlotWidget" name="rtd3_plot" native="true">
+    <widget class="PlotWidget" name="mag_x_plot" native="true">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>310</y>
-       <width>561</width>
+       <y>270</y>
+       <width>281</width>
        <height>91</height>
       </rect>
      </property>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>60</x>
         <y>0</y>
         <width>151</width>
         <height>16</height>
@@ -332,26 +293,26 @@
        </font>
       </property>
       <property name="text">
-       <string>Pressure_3</string>
+       <string>mag_x</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
-    <widget class="PlotWidget" name="rtd4_plot" native="true">
+    <widget class="PlotWidget" name="btn_1_plot" native="true">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>400</y>
-       <width>561</width>
+       <y>370</y>
+       <width>211</width>
        <height>91</height>
       </rect>
      </property>
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>30</x>
         <y>0</y>
         <width>151</width>
         <height>16</height>
@@ -363,26 +324,26 @@
        </font>
       </property>
       <property name="text">
-       <string>Pressure_4</string>
+       <string>btn_1</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
-    <widget class="PlotWidget" name="rtd5_plot" native="true">
+    <widget class="PlotWidget" name="encoder_plot" native="true">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>490</y>
-       <width>561</width>
+       <y>570</y>
+       <width>421</width>
        <height>91</height>
       </rect>
      </property>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>140</x>
         <y>0</y>
         <width>151</width>
         <height>16</height>
@@ -394,26 +355,26 @@
        </font>
       </property>
       <property name="text">
-       <string>Pressure_5</string>
+       <string>encoder</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
-    <widget class="PlotWidget" name="rtd6_plot" native="true">
+    <widget class="PlotWidget" name="battery_plot" native="true">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>580</y>
-       <width>561</width>
+       <x>440</x>
+       <y>570</y>
+       <width>431</width>
        <height>91</height>
       </rect>
      </property>
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>140</x>
         <y>0</y>
         <width>151</width>
         <height>16</height>
@@ -425,7 +386,459 @@
        </font>
       </property>
       <property name="text">
-       <string>Pressure_6</string>
+       <string>battery</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="PlotWidget" name="acc_y_plot" native="true">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>70</y>
+       <width>281</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>0</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>acc_y</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="PlotWidget" name="gyro_y_plot" native="true">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>170</y>
+       <width>281</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>0</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>gyro_y</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="PlotWidget" name="mag_y_plot" native="true">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>270</y>
+       <width>281</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>0</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>mag_y</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="PlotWidget" name="btn_2_plot" native="true">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>370</y>
+       <width>201</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>0</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>btn_2</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="PlotWidget" name="acc_z_plot" native="true">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>70</y>
+       <width>281</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>0</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>acc_y</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="PlotWidget" name="gyro_z_plot" native="true">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>170</y>
+       <width>281</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>0</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>gyro_z</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="PlotWidget" name="mag_z_plot" native="true">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>270</y>
+       <width>281</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>0</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>mag_z</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="PlotWidget" name="btn_3_plot" native="true">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>370</y>
+       <width>211</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>0</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>btn_3</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="label_23">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>10</y>
+       <width>151</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>MindCube - GUI</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="PlotWidget" name="btn_4_plot" native="true">
+     <property name="geometry">
+      <rect>
+       <x>660</x>
+       <y>370</y>
+       <width>211</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="label_25">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>0</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>btn_4</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>40</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Time stamp:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_15">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>40</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Seq number:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="timestamp_label">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>40</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="seq_label">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>40</y>
+       <width>41</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="PlotWidget" name="joystick_x_plot" native="true">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>470</y>
+       <width>421</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>0</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>joystick_x</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="PlotWidget" name="joystick_y_plot" native="true">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>470</y>
+       <width>431</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>0</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>joystick_y</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -437,8 +850,8 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>830</y>
-      <width>281</width>
+      <y>780</y>
+      <width>301</width>
       <height>31</height>
      </rect>
     </property>
@@ -457,8 +870,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>599</width>
-     <height>26</height>
+     <width>900</width>
+     <height>24</height>
     </rect>
    </property>
   </widget>
