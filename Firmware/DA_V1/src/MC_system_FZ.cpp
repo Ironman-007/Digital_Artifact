@@ -9,6 +9,8 @@ NRF52_ISR_Timer ISR_Timer;
 volatile bool timer4Interrupt_2ms  = false;
 volatile bool timer4Interrupt_20ms = false;
 
+int bat_v = 0;
+
 static void TimerHandler(void) {
   ISR_Timer.run();
 }
@@ -49,3 +51,7 @@ void MC_off_led(int pin)
   digitalWrite(pin, LOW);
 }
 
+void MC_read_bat_v(void)
+{
+  bat_v = analogRead(BAT_V_PIN);
+}

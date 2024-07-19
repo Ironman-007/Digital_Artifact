@@ -125,6 +125,9 @@ void MC_pack_ack(void) {
 
   mc_byte = (byte *) &encoder_count;
   memcpy(&pkg2send[49], mc_byte, 4);
+
+  mc_byte = (byte *) &bat_v;
+  memcpy(&pkg2send[53], mc_byte, 2);
 }
 
 void MC_comm_send_data(uint8_t *data2send, uint8_t len) {

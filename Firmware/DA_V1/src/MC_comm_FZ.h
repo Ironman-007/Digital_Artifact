@@ -4,7 +4,7 @@
 #include <bluefruit.h>
 
 #define MAX_PKG_LEN 200
-#define PKG_LEN     53
+#define PKG_LEN     55
 
 extern volatile bool ble_connnected;
 

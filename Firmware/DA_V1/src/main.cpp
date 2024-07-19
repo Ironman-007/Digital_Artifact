@@ -33,6 +33,7 @@ void loop() {
       MC_joystickRead();
       MC_read_imu();
       MC_read_btn();
+      MC_read_bat_v();
 
       MC_pack_ack();
       MC_comm_send_data(pkg2send, PKG_LEN);
