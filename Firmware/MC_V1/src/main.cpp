@@ -36,7 +36,7 @@ void loop() {
       MC_read_bat_v();
 
       MC_pack_ack();
-      MC_comm_send_data(pkg2send, PKG_LEN);
+      MC_comm_send_data();
     }
   }
 }
