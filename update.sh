@@ -1,4 +1,4 @@
-git pull --no-ff
+git pull origin main --no-ff
 git status
 git add --all
 git commit -a -m "UIST demo paper"
