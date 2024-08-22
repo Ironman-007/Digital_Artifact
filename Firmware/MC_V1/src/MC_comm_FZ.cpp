@@ -16,7 +16,7 @@ byte * mc_byte;
 uint32_t timestamp = 0;
 uint8_t  seq_num   = 0;
 
-uint8_t pkg2send[PKG_LEN]          = {0};
+uint8_t pkg2send[PKG_LEN]              = {0};
 uint8_t COBSpkg2send[PKG_LEN_COBS] = {0};
 
 int COBS_encoded_len = 0;
@@ -150,6 +150,7 @@ size_t COBSencode(uint8_t* buffer, size_t size, uint8_t* encodedBuffer) {
   while (read_index < size) {
     if (buffer[read_index] == 0) {
       encodedBuffer[code_index] = code;
+
       code = 1;
       code_index = write_index++;
       read_index++;
@@ -199,7 +200,7 @@ size_t COBSdecode(uint8_t* encodedBuffer, size_t size, uint8_t* decodedBuffer) {
 
 void MC_comm_send_data(void) {
   COBS_encoded_len = COBSencode(pkg2send, PKG_LEN, COBSpkg2send);
-  bleuart.write(COBSpkg2send, COBS_encoded_len);
+  bleuart.write(COBSpkg2send, COBS_encoded_len + 1);
 }
 
 
