@@ -20,6 +20,8 @@ import csv
 # import random
 import struct
 import os.path
+
+from cobs import cobs
 # from binascii import hexlify
 
 bat_v_a = 4.070469465841072
@@ -61,7 +63,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.serial_speed = [115200]
 
         # Ref: https://stackoverflow.com/questions/59898215/break-an-infinit-loop-when-button-is-pressed
-        self.timer = QtCore.QTimer(self, interval=5, timeout=self.read_port)
+        self.timer = QtCore.QTimer(self, interval=0.05, timeout=self.read_port)
+        # self.timer = QtCore.QTimer(self, interval=5, timeout=self.read_port_tst)
+
         self.ser=serial.Serial()
 
         self.clear_btn.clicked.connect(self.clear_plot)
@@ -98,6 +102,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.encoder_plot.setBackground('w')
         self.battery_plot.setBackground('w')
+
+        self.recv_bytes = []
 
         self.accx_temp  = [0] * DATA_NUM
         self.accy_temp  = [0] * DATA_NUM
@@ -159,6 +165,8 @@ class MainWindow(QtWidgets.QMainWindow):
         index = self.speed_comboBox.currentIndex()
         self.ser = serial.Serial(serial_ports_port, self.serial_speed[index])
 
+        self.recv_bytes = []
+
         current_time = read_current_time()
         self.log.append(current_time + self.ser.name + " Opened @ " + str(self.serial_speed[index]) + "bps")
 
@@ -185,10 +193,14 @@ class MainWindow(QtWidgets.QMainWindow):
         self.encoder_temp = [0] * DATA_NUM
         self.battery_temp = [0] * DATA_NUM
 
+        self.recv_bytes = []
+
     def stop_read_port(self):
         current_time = read_current_time()
         self.log.append(current_time + " :  Stop monitoring the Serial Port.\n")
         self.timer.stop() # Stop the timer
+
+        self.recv_bytes = []
 
     def recording_data(self):
         data_log_name = "pressure_data_shoe.csv"
@@ -212,187 +224,206 @@ class MainWindow(QtWidgets.QMainWindow):
         self.log.append(current_time + " -------> Stop recording data. <-------")
         self.recording = 0
 
-    def set_temp(self):
-        set_temperature = self.temp_spinbox.value()
-        tartget_temp = set_temperature.to_bytes(1, byteorder='little',signed=True)
-        current_time = read_current_time()
-        self.log.append(current_time + " Set platform temperature to " + str(set_temperature) + "degreeC.")
-        self.ser.write(tartget_temp)
+    def read_port_tst(self):
+        if (self.ser.inWaiting()):
+            recv_data = self.ser.read()[0]
+            if (recv_data != 0x00):
+                self.recv_bytes.append(recv_data)
+
+            else:
+                print(self.recv_bytes)
+
+                # self.recv_bytes to bytes
+                recv_bytes_list = bytes(self.recv_bytes)
+                self.recv_bytes = []
+                # print(recv_bytes_list)
+                decoded_bytes_list = cobs.decode(recv_bytes_list)
+                print(decoded_bytes_list)
 
     def read_port(self):
         if (self.ser.inWaiting()):
-            current_time = read_current_time()
-            recv_data = self.ser.read(recv_data_cnt)
+            recv_byte = self.ser.read()[0]
+            if (recv_byte != 0x00):
+                self.recv_bytes.append(recv_byte)
 
-            timstamp_i = recv_data[0:4]
-            timstamp_d = struct.unpack('i', timstamp_i)
-            temp1      = timstamp_d[0]
+            else:
+                # print(self.recv_bytes)
 
-            self.timestamp_label.setText(str(temp1))
+                # self.recv_bytes to bytes
+                recv_bytes_list = bytes(self.recv_bytes)
+                self.recv_bytes = []
+                # print(recv_bytes_list)
+                recv_data = cobs.decode(recv_bytes_list)
+                # print(decoded_bytes_list)
 
-            seq_i = recv_data[4]
-            temp2 = int(seq_i)
+                timstamp_i = recv_data[0:4]
+                timstamp_d = struct.unpack('i', timstamp_i)
+                temp1      = timstamp_d[0]
 
-            self.seq_label.setText(str(temp2))
+                self.timestamp_label.setText(str(temp1))
 
-            current_time = str(current_milli_time())
-            self.log.append(current_time + str(" Time stamp: {:d} -> Sequence number: {:d}".format(temp1, temp2)))
+                seq_i = recv_data[4]
+                temp2 = int(seq_i)
 
-            accx_temp_i = recv_data[5:9]
-            accx_temp_d = struct.unpack('f', accx_temp_i)
-            accx_temp   = accx_temp_d[0]
+                self.seq_label.setText(str(temp2))
 
-            accy_temp_i = recv_data[9:13]
-            accy_temp_d = struct.unpack('f', accy_temp_i)
-            accy_temp   = accy_temp_d[0]
+                current_time = str(current_milli_time())
+                self.log.append(current_time + str(" Time stamp: {:d} -> Sequence number: {:d}".format(temp1, temp2)))
 
-            accz_temp_i = recv_data[13:17]
-            accz_temp_d = struct.unpack('f', accz_temp_i)
-            accz_temp = accz_temp_d[0]
+                accx_temp_i = recv_data[5:9]
+                accx_temp_d = struct.unpack('f', accx_temp_i)
+                accx_temp   = accx_temp_d[0]
 
-            gyrox_temp_i = recv_data[17:21]
-            gyrox_temp_d = struct.unpack('f', gyrox_temp_i)
-            gyrox_temp   = gyrox_temp_d[0]
+                accy_temp_i = recv_data[9:13]
+                accy_temp_d = struct.unpack('f', accy_temp_i)
+                accy_temp   = accy_temp_d[0]
 
-            gyroy_temp_i = recv_data[21:25]
-            gyroy_temp_d = struct.unpack('f', gyroy_temp_i)
-            gyroy_temp = gyroy_temp_d[0]
+                accz_temp_i = recv_data[13:17]
+                accz_temp_d = struct.unpack('f', accz_temp_i)
+                accz_temp = accz_temp_d[0]
 
-            gyroz_temp_i = recv_data[25:29]
-            gyroz_temp_d = struct.unpack('f', gyroz_temp_i)
-            gyroz_temp = gyroz_temp_d[0]
+                gyrox_temp_i = recv_data[17:21]
+                gyrox_temp_d = struct.unpack('f', gyrox_temp_i)
+                gyrox_temp   = gyrox_temp_d[0]
 
-            magx_temp_i = recv_data[29:33]
-            magx_temp_d = struct.unpack('f', magx_temp_i)
-            magx_temp   = magx_temp_d[0]
+                gyroy_temp_i = recv_data[21:25]
+                gyroy_temp_d = struct.unpack('f', gyroy_temp_i)
+                gyroy_temp = gyroy_temp_d[0]
 
-            magy_temp_i = recv_data[33:37]
-            magy_temp_d = struct.unpack('f', magy_temp_i)
-            magy_temp   = magy_temp_d[0]
+                gyroz_temp_i = recv_data[25:29]
+                gyroz_temp_d = struct.unpack('f', gyroz_temp_i)
+                gyroz_temp = gyroz_temp_d[0]
 
-            magz_temp_i = recv_data[37:41]
-            magz_temp_d = struct.unpack('f', magz_temp_i)
-            magz_temp   = magz_temp_d[0]
+                magx_temp_i = recv_data[29:33]
+                magx_temp_d = struct.unpack('f', magx_temp_i)
+                magx_temp   = magx_temp_d[0]
 
-            joystick_x_temp_i = recv_data[41:43]
-            joystick_x_temp_d = struct.unpack('h', joystick_x_temp_i)
-            joystickx_temp = joystick_x_temp_d[0]
+                magy_temp_i = recv_data[33:37]
+                magy_temp_d = struct.unpack('f', magy_temp_i)
+                magy_temp   = magy_temp_d[0]
 
-            joystick_y_temp_i = recv_data[43:45]
-            joystick_y_temp_d = struct.unpack('h', joystick_y_temp_i)
-            joysticky_temp = joystick_y_temp_d[0]
+                magz_temp_i = recv_data[37:41]
+                magz_temp_d = struct.unpack('f', magz_temp_i)
+                magz_temp   = magz_temp_d[0]
 
-            btn1_temp = int(recv_data[45])
-            btn2_temp = int(recv_data[46])
-            btn3_temp = int(recv_data[47])
-            btn4_temp = int(recv_data[48])
+                joystick_x_temp_i = recv_data[41:43]
+                joystick_x_temp_d = struct.unpack('h', joystick_x_temp_i)
+                joystickx_temp = joystick_x_temp_d[0]
 
-            encoder_temp_i = recv_data[49:53]
-            encoder_temp_d = struct.unpack('i', encoder_temp_i)
-            encoder_temp = encoder_temp_d[0]
+                joystick_y_temp_i = recv_data[43:45]
+                joystick_y_temp_d = struct.unpack('h', joystick_y_temp_i)
+                joysticky_temp = joystick_y_temp_d[0]
 
-            battery_temp_i = recv_data[53:55]
-            battery_temp_d = struct.unpack('h', battery_temp_i)
+                btn1_temp = int(recv_data[45])
+                btn2_temp = int(recv_data[46])
+                btn3_temp = int(recv_data[47])
+                btn4_temp = int(recv_data[48])
 
-            self.accx_temp.pop(0)
-            self.accx_temp.append(accx_temp)
+                encoder_temp_i = recv_data[49:53]
+                encoder_temp_d = struct.unpack('i', encoder_temp_i)
+                encoder_temp = encoder_temp_d[0]
 
-            self.accy_temp.pop(0)
-            self.accy_temp.append(accy_temp)
+                battery_temp_i = recv_data[53:55]
+                battery_temp_d = struct.unpack('h', battery_temp_i)
 
-            self.accz_temp.pop(0)
-            self.accz_temp.append(accz_temp)
+                self.accx_temp.pop(0)
+                self.accx_temp.append(accx_temp)
 
-            self.gyrox_temp.pop(0)
-            self.gyrox_temp.append(gyrox_temp)
+                self.accy_temp.pop(0)
+                self.accy_temp.append(accy_temp)
 
-            self.gyroy_temp.pop(0)
-            self.gyroy_temp.append(gyroy_temp)
+                self.accz_temp.pop(0)
+                self.accz_temp.append(accz_temp)
 
-            self.gyroz_temp.pop(0)
-            self.gyroz_temp.append(gyroz_temp)
+                self.gyrox_temp.pop(0)
+                self.gyrox_temp.append(gyrox_temp)
 
-            self.magx_temp.pop(0)
-            self.magx_temp.append(magx_temp)
+                self.gyroy_temp.pop(0)
+                self.gyroy_temp.append(gyroy_temp)
 
-            self.magy_temp.pop(0)
-            self.magy_temp.append(magy_temp)
+                self.gyroz_temp.pop(0)
+                self.gyroz_temp.append(gyroz_temp)
 
-            self.magz_temp.pop(0)
-            self.magz_temp.append(magz_temp)
+                self.magx_temp.pop(0)
+                self.magx_temp.append(magx_temp)
 
-            self.joystick_x_temp.pop(0)
-            self.joystick_x_temp.append(joystickx_temp)
+                self.magy_temp.pop(0)
+                self.magy_temp.append(magy_temp)
 
-            self.joystick_y_temp.pop(0)
-            self.joystick_y_temp.append(joysticky_temp)
+                self.magz_temp.pop(0)
+                self.magz_temp.append(magz_temp)
 
-            self.btn1_temp.pop(0)
-            self.btn1_temp.append(btn1_temp)
-            self.btn2_temp.pop(0)
-            self.btn2_temp.append(btn2_temp)
-            self.btn3_temp.pop(0)
-            self.btn3_temp.append(btn3_temp)
-            self.btn4_temp.pop(0)
-            self.btn4_temp.append(btn4_temp)
+                self.joystick_x_temp.pop(0)
+                self.joystick_x_temp.append(joystickx_temp)
 
-            self.encoder_temp.pop(0)
-            self.encoder_temp.append(encoder_temp)
+                self.joystick_y_temp.pop(0)
+                self.joystick_y_temp.append(joysticky_temp)
 
-            self.battery_temp.pop(0)
-            self.battery_temp.append(battery_temp_d[0])
+                self.btn1_temp.pop(0)
+                self.btn1_temp.append(btn1_temp)
+                self.btn2_temp.pop(0)
+                self.btn2_temp.append(btn2_temp)
+                self.btn3_temp.pop(0)
+                self.btn3_temp.append(btn3_temp)
+                self.btn4_temp.pop(0)
+                self.btn4_temp.append(btn4_temp)
 
-            self.acc_x_plot.clear()
-            self.acc_y_plot.clear()
-            self.acc_z_plot.clear()
-            self.gyro_x_plot.clear()
-            self.gyro_y_plot.clear()
-            self.gyro_z_plot.clear()
-            self.mag_x_plot.clear()
-            self.mag_y_plot.clear()
-            self.mag_z_plot.clear()
-            self.joystick_x_plot.clear()
-            self.joystick_y_plot.clear()
-            self.btn_1_plot.clear()
-            self.btn_2_plot.clear()
-            self.btn_3_plot.clear()
-            self.btn_4_plot.clear()
-            self.encoder_plot.clear()
-            self.battery_plot.clear()
+                self.encoder_temp.pop(0)
+                self.encoder_temp.append(encoder_temp)
 
-            self.acc_x_plot.plot(self.time_index, self.accx_temp, pen=pg.mkPen('r', width=3))
-            self.acc_y_plot.plot(self.time_index, self.accy_temp, pen=pg.mkPen(color=(255, 150, 0) , width=3))
-            self.acc_z_plot.plot(self.time_index, self.accz_temp, pen=pg.mkPen(color=(250, 230, 0), width=3))
-            self.gyro_x_plot.plot(self.time_index, self.gyrox_temp, pen=pg.mkPen('g', width=3))
-            self.gyro_y_plot.plot(self.time_index, self.gyroy_temp, pen=pg.mkPen('b', width=3))
-            self.gyro_z_plot.plot(self.time_index, self.gyroz_temp, pen=pg.mkPen('k', width=3))
-            self.mag_x_plot.plot(self.time_index, self.magx_temp, pen=pg.mkPen('r', width=3))
-            self.mag_y_plot.plot(self.time_index, self.magy_temp, pen=pg.mkPen(color=(255, 150, 0) , width=3))
-            self.mag_z_plot.plot(self.time_index, self.magz_temp, pen=pg.mkPen(color=(250, 230, 0), width=3))
+                self.battery_temp.pop(0)
+                self.battery_temp.append(battery_temp_d[0])
 
-            self.joystick_x_plot.plot(self.time_index, self.joystick_x_temp, pen=pg.mkPen('g', width=3))
-            self.joystick_y_plot.plot(self.time_index, self.joystick_y_temp, pen=pg.mkPen('b', width=3))
-            self.btn_1_plot.plot(self.time_index, self.btn1_temp, pen=pg.mkPen('r', width=3))
-            self.btn_2_plot.plot(self.time_index, self.btn2_temp, pen=pg.mkPen(color=(255, 150, 0) , width=3))
-            self.btn_3_plot.plot(self.time_index, self.btn3_temp, pen=pg.mkPen(color=(250, 230, 0), width=3))
-            self.btn_4_plot.plot(self.time_index, self.btn4_temp, pen=pg.mkPen('g', width=3))
-            self.encoder_plot.plot(self.time_index, self.encoder_temp, pen=pg.mkPen('b', width=3))
-            self.battery_plot.plot(self.time_index, self.battery_temp, pen=pg.mkPen('k', width=3))
+                self.acc_x_plot.clear()
+                self.acc_y_plot.clear()
+                self.acc_z_plot.clear()
+                self.gyro_x_plot.clear()
+                self.gyro_y_plot.clear()
+                self.gyro_z_plot.clear()
+                self.mag_x_plot.clear()
+                self.mag_y_plot.clear()
+                self.mag_z_plot.clear()
+                self.joystick_x_plot.clear()
+                self.joystick_y_plot.clear()
+                self.btn_1_plot.clear()
+                self.btn_2_plot.clear()
+                self.btn_3_plot.clear()
+                self.btn_4_plot.clear()
+                self.encoder_plot.clear()
+                self.battery_plot.clear()
 
-            if self.recording == 1:
-                data_log_name = "pressure_data_shoe.csv"
-                with open(data_log_name, 'a', newline='', encoding='utf-8') as csvfile:
-                    pass
-                    # self.csvwriter = csv.writer(csvfile)
+                self.acc_x_plot.plot(self.time_index, self.accx_temp, pen=pg.mkPen('r', width=3))
+                self.acc_y_plot.plot(self.time_index, self.accy_temp, pen=pg.mkPen(color=(255, 150, 0) , width=3))
+                self.acc_z_plot.plot(self.time_index, self.accz_temp, pen=pg.mkPen(color=(250, 230, 0), width=3))
+                self.gyro_x_plot.plot(self.time_index, self.gyrox_temp, pen=pg.mkPen('g', width=3))
+                self.gyro_y_plot.plot(self.time_index, self.gyroy_temp, pen=pg.mkPen('b', width=3))
+                self.gyro_z_plot.plot(self.time_index, self.gyroz_temp, pen=pg.mkPen('k', width=3))
+                self.mag_x_plot.plot(self.time_index, self.magx_temp, pen=pg.mkPen('r', width=3))
+                self.mag_y_plot.plot(self.time_index, self.magy_temp, pen=pg.mkPen(color=(255, 150, 0) , width=3))
+                self.mag_z_plot.plot(self.time_index, self.magz_temp, pen=pg.mkPen(color=(250, 230, 0), width=3))
 
-                self.waveform_color = 'r'
+                self.joystick_x_plot.plot(self.time_index, self.joystick_x_temp, pen=pg.mkPen('g', width=3))
+                self.joystick_y_plot.plot(self.time_index, self.joystick_y_temp, pen=pg.mkPen('b', width=3))
+                self.btn_1_plot.plot(self.time_index, self.btn1_temp, pen=pg.mkPen('r', width=3))
+                self.btn_2_plot.plot(self.time_index, self.btn2_temp, pen=pg.mkPen(color=(255, 150, 0) , width=3))
+                self.btn_3_plot.plot(self.time_index, self.btn3_temp, pen=pg.mkPen(color=(250, 230, 0), width=3))
+                self.btn_4_plot.plot(self.time_index, self.btn4_temp, pen=pg.mkPen('g', width=3))
+                self.encoder_plot.plot(self.time_index, self.encoder_temp, pen=pg.mkPen('b', width=3))
+                self.battery_plot.plot(self.time_index, self.battery_temp, pen=pg.mkPen('k', width=3))
 
-            if self.recording_cnt == DATA_NUM:
-                self.recording = 0
-
-            if self.recording == 0:
-                self.file.close()
-                self.waveform_color = 'b'
+                # if self.recording == 1:
+                #     data_log_name = "pressure_data_shoe.csv"
+                #     with open(data_log_name, 'a', newline='', encoding='utf-8') as csvfile:
+                #         pass
+                #
+                #     self.waveform_color = 'r'
+                #
+                # if self.recording_cnt == DATA_NUM:
+                #     self.recording = 0
+                #
+                # if self.recording == 0:
+                #     self.file.close()
+                #     self.waveform_color = 'b'
 
     def clear_plot(self):
         self.log.clear()

@@ -10,7 +10,7 @@
 
 #define HW_TIMER_INTERVAL_MS 1
 #define TIMER_INTERVAL_2ms   5L
-#define TIMER_INTERVAL_20ms  20L
+#define TIMER_INTERVAL_20ms  50L
 
 extern volatile bool timer4Interrupt_2ms;
 extern volatile bool timer4Interrupt_20ms;

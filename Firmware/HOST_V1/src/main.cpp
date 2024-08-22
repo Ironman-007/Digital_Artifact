@@ -3,7 +3,6 @@
 
 BLEClientUart clientUart; // bleuart client
 
-
 /**
  * Callback invoked when scanner pick up an advertising data
  * @param report Structural advertising data
@@ -59,7 +58,7 @@ void bleuart_rx_callback(BLEClientUart& uart_svc)
 {
   while ( uart_svc.available() )
   {
-    Serial.write(uart_svc.read() );
+    Serial.write(uart_svc.read());
   }
 }
 
