@@ -47,7 +47,7 @@ void MC_read_imu(void) {
   gyro_y = gyro.gyro.y;
   gyro_z = gyro.gyro.z;
 
-  mag_x  = accel.magnetic.x;
-  mag_y  = accel.magnetic.y;
-  mag_z  = accel.magnetic.z;
+  mag_x  = mag.magnetic.x;
+  mag_y  = mag.magnetic.y;
+  mag_z  = mag.magnetic.z;
 }

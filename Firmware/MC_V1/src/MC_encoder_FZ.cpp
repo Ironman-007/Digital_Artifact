@@ -10,12 +10,10 @@ void MC_encoder_init() {
   pinMode(ENCODER_2_PIN, INPUT);
 }
 
-void MC_read_encoder(void)
-{
+void MC_read_encoder(void) {
   currentStateCLK = digitalRead(ENCODER_1_PIN);
 
-  if (currentStateCLK != lastStateCLK  && currentStateCLK == 1)
-  {
+  if (currentStateCLK != lastStateCLK  && currentStateCLK == 1) {
     if (digitalRead(ENCODER_2_PIN) != currentStateCLK) {
       encoder_count --;
     } else {

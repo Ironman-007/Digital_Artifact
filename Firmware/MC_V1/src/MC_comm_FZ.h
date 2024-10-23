@@ -5,7 +5,7 @@
 
 #define MAX_PKG_LEN   200
 #define PKG_LEN       55
-#define PKG_LEN_COBS  55
+#define PKG_LEN_COBS  57 // PKG_LEN + PKG_LEN/254 + 1 + "0x00"
 
 extern volatile bool ble_connnected;
 
